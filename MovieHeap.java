@@ -109,11 +109,11 @@ public class MovieHeap implements java.io.Serializable{
 	
 	}
   public static void main(String[] args) {
-    Heap test = new Heap();
-    Movie aMovie = new Movie("Nightmare Before Christmas", 20011031, 95);
-    Movie bMovie = new Movie("Caroline", 20200821 , 90); 
-    Movie cMovie = new Movie("Elves", 20031115, 29);
-    Movie dMovie = new Movie("Jump", 202020921 , 47); 
+    // Heap test = new Heap();
+    // Movie aMovie = new Movie("Nightmare Before Christmas", 20011031, 95);
+    // Movie bMovie = new Movie("Caroline", 20200821 , 90); 
+    // Movie cMovie = new Movie("Elves", 20031115, 29);
+    // Movie dMovie = new Movie("Jump", 202020921 , 47); 
 
     //test.insert(aMovie);
     
