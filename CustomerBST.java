@@ -45,14 +45,14 @@ public class CustomerBST implements java.io.Serializable{
     private void printTree2(Customer tree) {
         if (tree != null) {
             System.out.println(tree.getName() + " Creditnumber: " + tree.getCreditNum());
-                if (tree.getLeft() != null)
-                    System.out.print("Left: " + tree.getLeft().getName() + " ");
-                else
-                    System.out.print("Left: null ");
-                if (tree.getRight() != null)
-                System.out.println("Right: " + tree.getRight().getName() + " ");
-                else
-                    System.out.println("Right: null ");
+                // if (tree.getLeft() != null)
+                //     System.out.print("Left: " + tree.getLeft().getName() + " ");
+                // else
+                //     System.out.print("Left: null ");
+                // if (tree.getRight() != null)
+                // System.out.println("Right: " + tree.getRight().getName() + " ");
+                // else
+                //     System.out.println("Right: null ");
             printTree2(tree.getLeft());
             printTree2(tree.getRight());
         }

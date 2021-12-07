@@ -5,6 +5,11 @@ public class Newflix {
     
     static public CustomerBST all = new CustomerBST();
 
+    public Customer search(int creditcardNum){
+        Customer temp = all.search(creditcardNum);
+        return temp;
+    }
+
     public static void main(String[] args) {
 
         //Customer object = new Customer(1, "geeksforgeeks");
@@ -139,7 +144,18 @@ public class Newflix {
                         if (in.equals("a")){
                             all.printTree();
                         }else if (in.equals("s")){
+                            System.out.println("What customer would you like to accsess remember you enter the credit number of the customer you are looking for");
+                            int key = user.nextInt();
                             // searchCustomers();
+                            Customer temp = all.search(key);
+
+                            if (temp != null){
+                                System.out.println("This is "+ temp.getName() +"'s page");
+                            }else{
+                                System.out.println("seems like credid card number does not match any user");
+                            }
+                            in = user.nextLine(); // very hacky way of preventing a new line charter from makeing the else in the orginal while loop occur unexpectedly
+
                         }else if (in.equals("b")){
                             // user2.close();
                             //continue;
