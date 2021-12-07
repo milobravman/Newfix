@@ -74,6 +74,10 @@ public class Customer implements java.io.Serializable {
 
     }
 
+    public int WishlistLength(){
+        return wishN;
+    }
+
     public void upNest(){
         if (wishN == 0){
             System.out.println("There are no movies in you wish list!");

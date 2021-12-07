@@ -4,11 +4,13 @@ import java.io.*;
 public class Newflix {
     
     static public CustomerBST all = new CustomerBST();
+    //static public 
 
-    public Customer search(int creditcardNum){
-        Customer temp = all.search(creditcardNum);
-        return temp;
-    }
+    // public Customer search(int creditcardNum){
+    //     Customer temp = all.search(creditcardNum);
+    //     return temp;
+    // }
+
 
     public static void main(String[] args) {
 
@@ -151,8 +153,16 @@ public class Newflix {
 
                             if (temp != null){
                                 System.out.println("This is "+ temp.getName() +"'s page");
+                                System.out.println(temp.getName() +"'s email is "+ temp.getEmail());
+                                System.out.println(temp.getName() +" has a wish list with "+ temp.WishlistLength()+"Movies in it");
+
+                                System.out.println("Enter 1 to watch the next movie on the "+ temp.getName()+"'s wishlist");
+
+
+
                             }else{
                                 System.out.println("seems like credid card number does not match any user");
+                                System.out.println("Please use the 'a' command to see the credit card numbers");
                             }
                             in = user.nextLine(); // very hacky way of preventing a new line charter from makeing the else in the orginal while loop occur unexpectedly
 
