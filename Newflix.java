@@ -266,14 +266,36 @@ public class Newflix {
 
                         if (in.equals("a")) {
                             System.out.println("All avalible movies");
+                            avalibleMovies.printHeap();
 
                         } else if (in.equals("b")){
 
+                            //Hash.printHash();
+                            
 
                         } else if(in.equals("c")){
 
+                            Movie temp = avalibleMovies.findMin();
+
+                            if (temp != null){
+                                System.out.println(temp);
+                                System.out.println("would you like to remove this movie for the pool of avalible movies");
+                                System.out.println("enter 'y' for yes and any other charicter for no");
+                                in = user.nextLine();
+                                if (in.equals("y")){
+                                    avalibleMovies.deleteMin();
+                                    System.out.println("deleting "+ temp.getName()+" rating: "+temp.getRating());
+                                }
+                            }else {
+                                System.out.println("Seems like no movies are avalible");
+                            }
+
+                        }else if (in.equals("d")){
+                            moviePage = false;
+                            System.out.println("Returning to main menu");
+                            System.out.println("Remeber enter 'h' to see commands");
                         }else {
-                            
+                            System.out.println("Seems like you entered an invlaid command");
                         }
                         
                     }
