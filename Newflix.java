@@ -4,7 +4,8 @@ import java.io.*;
 public class Newflix {
     
     static public CustomerBST all = new CustomerBST();
-    static public MovieHeap avalibleMovies = new MovieHeap(); 
+    static public MovieHeap avalibleMovies = new MovieHeap();
+    static public MovieDict allMoviesEver = new MovieDict(); 
 
 
     public static void main(String[] args) {
@@ -69,8 +70,35 @@ public class Newflix {
             System.out.println("ClassNotFoundException is caught");
         }
 
+        // Deserialization of MovieDict
+        try
+        {   
+            // Reading the BST from a file
+            FileInputStream Files = new FileInputStream("movieDictiony.ser");
+            ObjectInputStream in = new ObjectInputStream(Files);
+
+            allMoviesEver = (MovieDict)in.readObject();
+            
+            in.close();
+            Files.close();
+              
+            System.out.println("Object has been deserialized ");
+        }
+          
+        catch(IOException ex)
+        {
+            System.out.println(ex);
+            System.out.println("IOException is caught");
+        }
+          
+        catch(ClassNotFoundException ex)
+        {
+            System.out.println("ClassNotFoundException is caught");
+        }
 
 
+
+        // Begining of of CLI menu code
 
         boolean running = true;
 
@@ -138,6 +166,27 @@ public class Newflix {
                     } catch (Exception e) {
                         System.out.println(e);
                     }
+
+                    // Serilization of Movie Dictionary
+
+                    try {
+
+                        //Saving of object in a file
+                        FileOutputStream file = new FileOutputStream("movieDictiony.ser");
+                        ObjectOutputStream out = new ObjectOutputStream(file);
+                            
+                        // Method for serialization of object
+                        out.writeObject(allMoviesEver);
+                            
+                        out.close();
+                        file.close();
+                            
+                        System.out.println("Object has been serialized");
+                        
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+
                 }
                 else if (in.equals("1")){
                     //createCustomer();
@@ -195,6 +244,7 @@ public class Newflix {
                      try {
                            Movie tempM = new Movie(mName, rDate, rating);
                            avalibleMovies.insertHeap(tempM);
+                           allMoviesEver.insertDict(tempM);
                            createMovie = false; // stops from prompting for another movie
                            System.out.println("Successfully added the movie!");
                        } 
@@ -230,7 +280,13 @@ public class Newflix {
                                 System.out.println(temp.getName() +"'s email is "+ temp.getEmail());
                                 System.out.println(temp.getName() +" has a wish list with "+ temp.WishlistLength()+"Movies in it");
 
-                                System.out.println("Enter 1 to watch the next movie on the "+ temp.getName()+"'s wishlist");
+                                System.out.println("Enter y to watch the next movie on the "+ temp.getName()+"'s wishlist");
+                                in = user.nextLine();
+                                if (in.equals("y")){
+                                    temp.upNest();
+                                }else{
+                                    in = "b";
+                                }
 
 
 
@@ -265,13 +321,13 @@ public class Newflix {
                         in = user.nextLine();
 
                         if (in.equals("a")) {
+
                             System.out.println("All avalible movies");
                             avalibleMovies.printHeap();
 
                         } else if (in.equals("b")){
 
-                            //Hash.printHash();
-                            
+                            allMoviesEver.printHashtable();
 
                         } else if(in.equals("c")){
 
@@ -313,14 +369,11 @@ public class Newflix {
                     System.out.println("Enter '3' to See Customer commands");
                     System.out.println("Enter '4' to See Movie commands");
                 }
-                
+
             } catch (Exception e) {
                 System.out.println(e);
                 continue;
             }
-
-
-                
         }
             user.close();
     }
