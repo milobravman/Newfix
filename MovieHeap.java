@@ -100,13 +100,11 @@ public class MovieHeap implements java.io.Serializable{
 	}
 	
 	public void printHeap(){
-		System.out.println("Heap size: " + n);		// print every item in the list as long as we get through all the items of the list
+		//System.out.println("There are " + n +" avalible movies");		// print every item in the list as long as we get through all the items of the list
 		for(int i = 0; i < n; i++) {		
-            		System.out.print(p[i].getRating() + ",");	
+            System.out.print(p[i].getName()+" Rating: " + p[i].getRating() + " ");	
 		}
-
-    
-	
+        System.out.println("");
 	}
   public static void main(String[] args) {
     // Heap test = new Heap();

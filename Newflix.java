@@ -278,18 +278,12 @@ public class Newflix {
                             if (temp != null){
                                 System.out.println("This is "+ temp.getName() +"'s page");
                                 System.out.println(temp.getName() +"'s email is "+ temp.getEmail());
-                                System.out.println(temp.getName() +" has a wish list with "+ temp.WishlistLength()+"Movies in it");
-
-                                System.out.println("Enter y to watch the next movie on the "+ temp.getName()+"'s wishlist");
-                                in = user.nextLine();
-                                if (in.equals("y")){
+                                System.out.println(temp.getName() +" has a wish list with "+ temp.WishlistLength()+" Movies in it");
+                                System.out.println("Enter 1 to watch the next movie on the "+ temp.getName()+"'s wishlist");
+                                int show = user.nextInt();
+                                if (show == 1){
                                     temp.upNest();
-                                }else{
-                                    in = "b";
                                 }
-
-
-
                             }else{
                                 System.out.println("seems like credid card number does not match any user");
                                 System.out.println("Please use the 'a' command to see the credit card numbers");
