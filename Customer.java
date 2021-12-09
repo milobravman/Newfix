@@ -92,11 +92,17 @@ public class Customer implements java.io.Serializable {
                         System.out.println("Please enter 'Y' for yes or 'N' for no");
                         Scanner watched = new Scanner(System.in);                   
                         while (true) {
-                            String userAnser = watched.nextLine();
+                            String userAnser = watched.next();
                             if (userAnser.equals("Y")){
-
                                 System.out.println("Removing "+ wishList[front%20].getName() +" from your wishlist");
                                 this.dequeue();
+                                if (head == null){
+                                    head = wishList[front%20];
+                                }else {
+                                    Movie temp = head;
+                                    head = wishList[front%20];
+                                    head.setNext(temp);
+                                }
                                 break;
 
                             }else if(userAnser.equals("N")){ 

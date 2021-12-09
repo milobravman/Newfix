@@ -3,6 +3,7 @@ class MovieDict implements java.io.Serializable{
     private Movie[] MovieArr = new Movie[503];
   
     public MovieDict(){
+
     }
   
     public boolean isEmpty(){
@@ -10,7 +11,7 @@ class MovieDict implements java.io.Serializable{
     }
   
     public void insertDict(Movie newMovie){
-      newMovie.setNext(MovieArr[newMovie.getID()%8]);
+      newMovie.setNext(MovieArr[newMovie.getID()%503]);
       MovieArr[newMovie.getID()%503]= newMovie;
       n++;     
     }
@@ -21,9 +22,6 @@ class MovieDict implements java.io.Serializable{
       Movie temp = MovieArr[key%503];
       int i = 0;
       while (temp!=null){
-        if (temp == null){
-          break;
-        }
         if (temp.getID() == key){
           if (i == 0){
             MovieArr[key%503] = temp.getNext();
@@ -43,34 +41,29 @@ class MovieDict implements java.io.Serializable{
           i++;
         }
       }
-    }  
-      
+    }   
   
-    public String lookUpDict(int key){
+    public Movie lookUpDict(int key){
       Movie temp = MovieArr[key%503];
       while (temp!=null){
         if (temp.getID() == key){
-          return temp.getName();
+          return temp;
         }
         else{
           temp = temp.getNext();
         }
       }
-      return temp.getName();
+      return temp;
     }
-  
   
     public void printHashtable(){
-     for (int i = 0 ; i<8 ;i++ ){
+        System.out.println(n +" movies in the hash");
+     for (int i = 0 ; i<503 ;i++ ){
        Movie temp = MovieArr[i];
-       System.out.print("index" + i + ":" + " ");
        while (temp != null){
-        System.out.print(temp.getName()+ " " + ":" + " ");
+        System.out.println(temp.getName()+ " Movie id:" +temp.getID() + " isAvailable?:" + temp.isAvailable());
         temp = temp.getNext();
         }
-       System.out.println();
       } 
     }
-  
-  
   }

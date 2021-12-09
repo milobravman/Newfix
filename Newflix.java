@@ -116,7 +116,7 @@ public class Newflix {
                     System.out.println("");
                     System.out.println("Enter 'q' to QUIT");
                     System.out.println("Enter '1' to Create a new Customer Account");
-                    System.out.println("Enter '2' to Add a new Movie Account");
+                    System.out.println("Enter '2' to Add a new Movie");
                     System.out.println("Enter '3' to See Customer commands");
                     System.out.println("Enter '4' to See Movie commands");
                 }
@@ -280,10 +280,44 @@ public class Newflix {
                                 System.out.println(temp.getName() +"'s email is "+ temp.getEmail());
                                 System.out.println(temp.getName() +" has a wish list with "+ temp.WishlistLength()+" Movies in it");
                                 System.out.println("Enter 1 to watch the next movie on the "+ temp.getName()+"'s wishlist");
+                                System.out.println("Enter 2 to add a movie to "+ temp.getName()+"'s wishlist");
+                                System.out.println("Enter 3 to watch a movie for "+ temp.getName());
+                                //int show = user.nextInt();
                                 int show = user.nextInt();
                                 if (show == 1){
+                                    //System.out.println("hi");
                                     temp.upNest();
+                                } else if (show == 2){
+                                    System.out.println("enter the ID of the movie you want to add to " + temp.getName()+"'s wishlist");
+                                    int id = user.nextInt();
+                                    Movie tempMovie = allMoviesEver.lookUpDict(id);
+                                    if (tempMovie!= null){
+                                        temp.addToWish(tempMovie);
+                                    }else{
+                                        System.out.println("Seems like you entered an invalid movie id");
+                                        avalibleMovies.printHeap();
+                                    }
+
+                                } else if (show == 3){
+                                    System.out.println("enter the ID of the movie you want to add to" + temp.getName()+"'s wishlist");
+                                    int id = user.nextInt();
+                                    Movie tempMovie = allMoviesEver.lookUpDict(id);
+                                    if (tempMovie !=null){
+                                        if (tempMovie.isAvailable()){
+                                            System.out.println(temp.getName() + "Watched" + tempMovie.getName());
+                                            temp.watch(tempMovie);
+                                        }else{
+                                            System.out.println("Sorry"+ tempMovie.getName() +"is no longer avlaible");
+                                        }
+                                    }else{
+                                        System.out.println("Seems like you entered an invalid movie id");
+                                        avalibleMovies.printHeap();
+                                    }
                                 }
+                                else{
+                                    System.out.println("To return to the main menu enter 'b'");
+                                }
+
                             }else{
                                 System.out.println("seems like credid card number does not match any user");
                                 System.out.println("Please use the 'a' command to see the credit card numbers");
