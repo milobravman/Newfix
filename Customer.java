@@ -85,7 +85,7 @@ public class Customer implements java.io.Serializable {
             boolean found = false;
             while (found == false){
                 if (wishList[front%20].isAvailable()){
-                    System.out.println(wishList[front%20]);
+                    System.out.println(wishList[front%20].getName());
                     found = true;
                     try {
                         System.out.println("would you like to remove this movie from your wishlist?");
@@ -93,29 +93,37 @@ public class Customer implements java.io.Serializable {
                         Scanner watched = new Scanner(System.in);                   
                         while (true) {
                             String userAnser = watched.next();
+                            System.out.println(userAnser.equals("Y"));
                             if (userAnser.equals("Y")){
                                 System.out.println("Removing "+ wishList[front%20].getName() +" from your wishlist");
                                 this.dequeue();
-                                if (head == null){
-                                    head = wishList[front%20];
-                                }else {
-                                    Movie temp = head;
-                                    head = wishList[front%20];
-                                    head.setNext(temp);
-                                }
+                                // if (head == null){
+                                //     head = wishList[front%20];
+                                // }else {
+                                //     Movie temp = head;
+                                //     head = wishList[front%20];
+                                //     head.setNext(temp);
+                                // }
+                                found = true;
                                 break;
 
                             }else if(userAnser.equals("N")){ 
                                 System.out.println(" Leaving the wishlised unchaged");
+                                found = true;
                                 break;
                             }else{
                                 System.out.println("Seems like you entered an invalid token");
                                 System.out.println("Please enter 'Y' for yes or 'N' for no");
                             }
                         }
-                        watched.close();
+                        //watched.close(); 
+                        // commenting out the closing of the scanner is bad but closing the scanner in here also closed the main scanner causing the porgram to crash
+
+                        // I should probobly rewrite the customers class to not use the scanner at all.
                     } catch (Exception e) {
                         System.out.println(e);
+                        found = true;
+                        break;
                     }
                 }
                 else{
@@ -126,11 +134,11 @@ public class Customer implements java.io.Serializable {
         }
     }
 
-    private Movie dequeue(){
-        Movie temp = wishList[front%20];
+    private void dequeue(){
+        //Movie temp = wishList[front%20];
         front = front +1;
         wishN -=1; 
-        return temp;
+        //return temp;
     }
 
     public void watch(Movie node){
@@ -141,6 +149,13 @@ public class Customer implements java.io.Serializable {
             head = node;
         }
         wachedN++;
+    }
+
+    public static void main(String[] args) {
+        Movie movie = new Movie("mName", 20160505, 99);
+        Customer bob = new Customer("bob", "email", 123);
+        bob.addToWish(movie);
+        bob.upNest();
     }
 
 }

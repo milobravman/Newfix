@@ -282,40 +282,47 @@ public class Newflix {
                                 System.out.println("Enter 1 to watch the next movie on the "+ temp.getName()+"'s wishlist");
                                 System.out.println("Enter 2 to add a movie to "+ temp.getName()+"'s wishlist");
                                 System.out.println("Enter 3 to watch a movie for "+ temp.getName());
+                                System.out.println("Enter 4 to return to " + temp.getName() + "'s customer page ");
                                 //int show = user.nextInt();
-                                int show = user.nextInt();
-                                if (show == 1){
-                                    //System.out.println("hi");
-                                    temp.upNest();
-                                } else if (show == 2){
-                                    System.out.println("enter the ID of the movie you want to add to " + temp.getName()+"'s wishlist");
-                                    int id = user.nextInt();
-                                    Movie tempMovie = allMoviesEver.lookUpDict(id);
-                                    if (tempMovie!= null){
-                                        temp.addToWish(tempMovie);
-                                    }else{
-                                        System.out.println("Seems like you entered an invalid movie id");
-                                        avalibleMovies.printHeap();
-                                    }
-
-                                } else if (show == 3){
-                                    System.out.println("enter the ID of the movie you want to add to" + temp.getName()+"'s wishlist");
-                                    int id = user.nextInt();
-                                    Movie tempMovie = allMoviesEver.lookUpDict(id);
-                                    if (tempMovie !=null){
-                                        if (tempMovie.isAvailable()){
-                                            System.out.println(temp.getName() + "Watched" + tempMovie.getName());
-                                            temp.watch(tempMovie);
+                                boolean customerSelected = true;
+                                while (customerSelected){
+                                    int show = user.nextInt();
+                                    if (show == 1){
+                                        //System.out.println("hi");
+                                        temp.upNest();
+                                        in = user.nextLine();
+                                    } else if (show == 2){
+                                        System.out.println("enter the ID of the movie you want to add to " + temp.getName()+"'s wishlist");
+                                        int id = user.nextInt();
+                                        Movie tempMovie = allMoviesEver.lookUpDict(id);
+                                        if (tempMovie!= null){
+                                            temp.addToWish(tempMovie);
                                         }else{
-                                            System.out.println("Sorry"+ tempMovie.getName() +"is no longer avlaible");
+                                            System.out.println("Seems like you entered an invalid movie id");
+                                            avalibleMovies.printHeap();
                                         }
-                                    }else{
-                                        System.out.println("Seems like you entered an invalid movie id");
-                                        avalibleMovies.printHeap();
+    
+                                    } else if (show == 3){
+                                        System.out.println("enter the ID of the movie you want show" + temp.getName());
+                                        int id = user.nextInt();
+                                        Movie tempMovie = allMoviesEver.lookUpDict(id);
+                                        if (tempMovie !=null){
+                                            if (tempMovie.isAvailable()){
+                                                System.out.println(temp.getName() + " Watched " + tempMovie.getName());
+                                                temp.watch(tempMovie);
+                                            }else{
+                                                System.out.println("Sorry "+ tempMovie.getName() +" is no longer avlaible");
+                                            }
+                                        }else{
+                                            System.out.println("Seems like you entered an invalid movie id");
+                                            avalibleMovies.printHeap();
+                                        }
+                                    } else if (show == 4){
+                                        customerSelected = false;
                                     }
-                                }
-                                else{
-                                    System.out.println("To return to the main menu enter 'b'");
+                                    else{
+                                        System.out.println("seems like you entered an invalid command");
+                                    }
                                 }
 
                             }else{
@@ -400,7 +407,9 @@ public class Newflix {
 
             } catch (Exception e) {
                 System.out.println(e);
-                continue;
+                System.out.println("hi");
+                break;
+                //continue;
             }
         }
             user.close();

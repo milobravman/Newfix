@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 class MovieSeeds {
     public static void main(String[] args) {
@@ -97,6 +97,8 @@ class MovieSeeds {
         b.insertDict(yMovie);
         b.insertDict(zMovie);
 
+        b.printHashtable();
+
         try {
 
             //Saving of object in a file
@@ -133,9 +135,5 @@ class MovieSeeds {
         } catch (Exception e) {
             System.out.println(e);
         }
-
-
-
-
       }
    }
