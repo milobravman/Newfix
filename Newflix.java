@@ -369,7 +369,7 @@ public class Newflix {
                             Movie temp = avalibleMovies.findMin();
 
                             if (temp != null){
-                                System.out.println(temp);
+                                System.out.println(temp.getName());
                                 System.out.println("would you like to remove this movie for the pool of avalible movies");
                                 System.out.println("enter 'y' for yes and any other charicter for no");
                                 in = user.nextLine();
