@@ -403,8 +403,8 @@ public class Main {
                                 in = user.nextLine();
                                 if (in.equals("y")){
                                     avalibleMovies.deleteMin();
-                                    System.out.println("deleting "+ temp.getName()+" rating: "+temp.getRating());
-                                    System.out.println("The movie has been deleted! Enter 'd' to go back to the main menu.");
+                                    System.out.println("remvoing "+ temp.getName()+" from the list of avlaible movies rating: "+temp.getRating());
+                                    System.out.println("The movie has been removed! Enter 'd' to go back to the main menu.");
                                 }
                             }
                             else {  //if heap is empty 
