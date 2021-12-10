@@ -34,8 +34,9 @@ public class Movie implements java.io.Serializable{
 
   //the following code is all for the movie ID
   //returns the last 4 digits of the movie ID
+  // I got rid of the modulo b/c the movie ID needs to be 5 digests long
 	public Integer getID(){
-		return mID%10000;
+		return mID;
 	}
 
 

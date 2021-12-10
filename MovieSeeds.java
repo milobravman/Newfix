@@ -37,19 +37,19 @@ class MovieSeeds {
         Movie yMovie = new Movie("Death Note", 20180217 , 59);
         Movie zMovie = new Movie("Veronica", 20180316, 100);
     
+        b.insertDict(jMovie);
+        b.insertDict(kMovie);
+        b.insertDict(iMovie);
+        b.insertDict(lMovie);
         b.insertDict(aMovie);
         b.insertDict(bMovie);
+
         b.insertDict(cMovie);
         b.insertDict(dMovie);
         b.insertDict(eMovie);
         b.insertDict(fMovie);
-
         b.insertDict(gMovie);
         b.insertDict(hMovie);
-        b.insertDict(iMovie);
-        b.insertDict(jMovie);
-        b.insertDict(kMovie);
-        b.insertDict(lMovie);
 
         b.insertDict(mMovie);
         b.insertDict(nMovie);
@@ -69,7 +69,7 @@ class MovieSeeds {
         b.insertDict(zMovie);
 
 
-        
+
         a.insertHeap(aMovie);
         a.insertHeap(bMovie);
         a.insertHeap(cMovie);

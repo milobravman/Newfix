@@ -74,7 +74,7 @@ class MovieDict implements java.io.Serializable{
      for (int i = 0 ; i<503 ;i++ ){
        Movie temp = MovieArr[i];
        while (temp != null){
-        System.out.println(temp.getName()+ " Movie id:" +temp.getID() + " isAvailable?:" + temp.isAvailable());
+        System.out.println(temp.getName()+ " Movie id:" +temp.getID() + " isAvailable?:" + temp.isAvailable() + "Date: " + temp.getDate());
         temp = temp.getNext();
         }
       } 
