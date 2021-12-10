@@ -155,7 +155,7 @@ public class Customer implements java.io.Serializable {
         if (head !=null){
             Movie temp = head;
             while (temp !=null){
-                System.out.println(name + "has watched" + temp.getName());
+                System.out.println(name + " has watched " + temp.getName());
                 temp = temp.getNext();
             }
 

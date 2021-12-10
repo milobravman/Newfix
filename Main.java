@@ -293,6 +293,7 @@ public class Main {
                                 System.out.println("Enter 2 to add a movie to "+ temp.getName()+"'s wishlist");
                                 System.out.println("Enter 3 to watch a movie for "+ temp.getName());
                                 System.out.println("Enter 4 to return to " + temp.getName() + "'s customer page ");
+                                System.out.println("Enter 5 to see all movies" + temp.getName() + "has ever watched");
 
                                 boolean customerSelected = true;
                                 while (customerSelected){
