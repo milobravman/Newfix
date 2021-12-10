@@ -80,7 +80,7 @@ public class Customer implements java.io.Serializable {
 
     public void upNest(){
         if (wishN == 0){
-            System.out.println("There are no movies in you wish list!");
+            System.out.println("There are no movies in this wish list!");
         }else {
             boolean found = false;
             while (found == false){

@@ -419,31 +419,36 @@ public class Main {
                             System.out.println("Returning to the main menu");
                             System.out.println("Remember to enter 'h' to see commands");
                         }else if (in.equals("e")){
-                            int [] moviesOrdered = allMoviesEver.ordredArry();
-                            System.out.println("there are " + allMoviesEver.n+ " movies");
-                            System.out.println("This list is oreded by release date so 0 will give you the oldest and " +allMoviesEver.n+" will give you the most resent");
-                            int movie = user.nextInt();
-                            if (movie > allMoviesEver.n){
-                                System.out.println("You entered a number larger than " + allMoviesEver.n + " it must be lower");
-                            }else{
-
-                                Movie temp = allMoviesEver.lookUpDate(moviesOrdered[503+movie- allMoviesEver.n]);
-                                System.out.println(temp.getName());
-                                System.out.println("would you like to delete " + temp.getName());
-                                System.out.println("enter y to delte or n to not ");
-                                in = user.nextLine();
-                                in = user.nextLine(); // very silly way of not have the new line charater mess things up
-                                if(in.equals("y")){
-                                    allMoviesEver.setMovieArr(allMoviesEver.deleteDict(temp));
-                                    System.out.println("Deleting " + temp.getName());
-                                }else if (in.equals("n")){  
-                                    System.out.println("leaving " + temp.getName() + " in place");
+                            try {
+                                int [] moviesOrdered = allMoviesEver.ordredArry();
+                                System.out.println("there are " + allMoviesEver.n+ " movies");
+                                System.out.println("This list is oreded by release date so 0 will give you the oldest and " +allMoviesEver.n+" will give you the most resent");
+                                int movie = user.nextInt();
+                                if (movie > allMoviesEver.n){
+                                    System.out.println("You entered a number larger than " + allMoviesEver.n + " it must be lower");
                                 }else{
-                                    System.out.println("seems like you entered an invalid commamnd");
+    
+                                    Movie temp = allMoviesEver.lookUpDate(moviesOrdered[503+movie- allMoviesEver.n]);
+                                    System.out.println(temp.getName());
+                                    System.out.println("would you like to delete " + temp.getName());
+                                    System.out.println("this movies avaliblilty is " + temp.isAvailable());
+                                    System.out.println("enter y to delte or n to not ");
+                                    in = user.nextLine();
+                                    in = user.nextLine(); // very silly way of not have the new line charater mess things up
+                                    if(in.equals("y")){
+                                        allMoviesEver.setMovieArr(allMoviesEver.deleteDict(temp));
+                                        System.out.println("Deleting " + temp.getName());
+                                    }else if (in.equals("n")){  
+                                        System.out.println("leaving " + temp.getName() + " in place");
+                                    }else{
+                                        System.out.println("seems like you entered an invalid commamnd");
+                                    }
+                                    //System.out.println(Arrays.toString(moviesOrdered));
+    
+                                    System.out.println("returning to movie page");
                                 }
-                                //System.out.println(Arrays.toString(moviesOrdered));
-
-                                System.out.println("returning to movie page");
+                            } catch (Exception e) {
+                                //TODO: handle exception
                             }
 
                         }
