@@ -93,7 +93,7 @@ public class Customer implements java.io.Serializable {
                         Scanner watched = new Scanner(System.in);                   
                         while (true) {
                             String userAnser = watched.next();
-                            System.out.println(userAnser.equals("Y"));
+                            //System.out.println(userAnser.equals("Y"));
                             if (userAnser.equals("Y")){
                                 System.out.println("Removing "+ wishList[front%20].getName() +" from your wishlist");
                                 this.dequeue();
@@ -149,6 +149,19 @@ public class Customer implements java.io.Serializable {
             head = node;
         }
         wachedN++;
+    }
+
+    public void printWatched(){
+        if (head !=null){
+            Movie temp = head;
+            while (temp !=null){
+                System.out.println(name + "has watched" + temp.getName());
+                temp = temp.getNext();
+            }
+
+        } else {
+            System.out.println(name +"has not watched any movies");
+        }
     }
 
     public static void main(String[] args) {

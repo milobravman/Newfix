@@ -337,6 +337,14 @@ public class Main {
                                     } 
                                     else if (show == 4){
                                         customerSelected = false;
+                                        System.out.println("Returning to Customers menu");
+
+                                        System.out.println("To see all current Customers enter 'a'");
+                                        System.out.println("To search for a Customers enter 's'");
+                                        System.out.println("To return to the main menu enter 'b'");
+
+                                    }else if (show == 5){
+                                        temp.printWatched();
                                     }
                                     else{
                                         System.out.println("It seems like you entered an invalid command.");
