@@ -389,9 +389,7 @@ public class Main {
                             avalibleMovies.printHeap();
 
                         } else if (in.equals("b")){
-
                             allMoviesEver.printHashtable();
-
                         } else if(in.equals("c")){  
                             System.out.print("The least rated movie is: ");
                             Movie temp = avalibleMovies.findMin();

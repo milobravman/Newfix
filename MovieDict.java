@@ -4,7 +4,7 @@ import java.util.Arrays;
 class MovieDict implements java.io.Serializable{
   public int n = 0; 
   private Movie[] MovieArr = new Movie[503];
-  public int[] DateArr = new int[503];
+  //public int[] DateArr = new int[503];
   public MovieDict(){
   }
   
@@ -82,6 +82,7 @@ class MovieDict implements java.io.Serializable{
 
   public void printHashtable(){//print all movies in order of release date 
    int x = 0; 
+   int[] DateArr = new int[503];
    for (int i = 0 ; i<503 ; i++ ){ 
      Movie temp = MovieArr[i];
      while (temp != null){
