@@ -7,6 +7,7 @@ class MovieDict implements java.io.Serializable{
   //public int[] DateArr = new int[503];
 
   public int[] MovieDates = new int[503];
+  public int x = 0;
 
   public MovieDict(){
   }
@@ -15,13 +16,17 @@ class MovieDict implements java.io.Serializable{
     return (n == 0);
   }
 
+  public void setMovieArr(Movie[] changed){
+      MovieArr = changed;
+  }
+
   //insert 
   public void insertDict(Movie newMovie){
     newMovie.setNext(MovieArr[newMovie.getID()%503]);
     MovieArr[newMovie.getID()%503]= newMovie;
 
-    int x = 0;
     MovieDates[x] = newMovie.getDate();
+    x++; 
     n++;      
   }
 
@@ -32,34 +37,34 @@ class MovieDict implements java.io.Serializable{
   }
 
   //delete 
-  public void deleteDict(Movie newMovie){
+  public Movie[] deleteDict(Movie newMovie){
     int key = newMovie.getID();
     Movie pre = MovieArr[key%503];
     Movie temp = MovieArr[key%503];
-    int i = 0;
+    int r = 0;
     while (temp!=null){
-      if (temp == null){
-        break;
-      }
       if (temp.getID() == key){
-        if (i == 0){
+        if (r == 0){
           MovieArr[key%503] = temp.getNext();
-          n--;
+          r--;
+          return MovieArr;
         }
         else{
           pre.setNext(temp.getNext());
           temp.setNext(null);
-          n--;
+          r--;
+          return MovieArr;
         }
       }
       else{
         temp = temp.getNext();
-        if (i > 0){
-          pre = pre.getNext();
+        if (r > 0){
+         pre = pre.getNext();
         }
-        i++;
-      }
+        r++;
+      } 
     }
+    return MovieArr;
   }  
     
   //look up 
