@@ -432,6 +432,7 @@ public class Main {
                                 System.out.println("would you like to delete " + temp.getName());
                                 System.out.println("enter y to delte or n to not ");
                                 in = user.nextLine();
+                                in = user.nextLine(); // very silly way of not have the new line charater mess things up
                                 if(in.equals("y")){
                                     allMoviesEver.setMovieArr(allMoviesEver.deleteDict(temp));
                                     System.out.println("Deleting " + temp.getName());
