@@ -379,7 +379,7 @@ public class Main {
                     System.out.println("To see all movies ever enter 'b'");
                     System.out.println("To see the least rated movie entered 'c'");
                     System.out.println("To return to the main menu enter 'd'");
-
+                    System.out.println("To see the next movie by date movie enter 'e'");
                     while (moviePage) {
                         in = user.nextLine();
 
@@ -414,6 +414,20 @@ public class Main {
                             moviePage = false;
                             System.out.println("Returning to the main menu");
                             System.out.println("Remember to enter 'h' to see commands");
+                        }else if (in.equals("e")){
+                            int [] moviesOrdered = allMoviesEver.ordredArry();
+                            System.out.println("there are" + allMoviesEver.n+ "movies");
+                            System.out.println("This list is oreded by release date so 0 will give you the oldest and" +allMoviesEver.n+"will gove you the most resent");
+                            int movie = user.nextInt();
+                            if (movie > allMoviesEver.n){
+                                System.out.println("You entered a number larger than " + allMoviesEver.n + " it must be lower");
+                            }else{
+
+                                Movie temp = allMoviesEver.lookUpDate(moviesOrdered[movie]);
+                                System.out.println(temp);
+                                System.out.println(moviesOrdered[movie]);
+                            }
+
                         }
                         else {
                             System.out.println("Seems like you entered an invalid command");

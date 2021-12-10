@@ -5,6 +5,9 @@ class MovieDict implements java.io.Serializable{
   public int n = 0; 
   private Movie[] MovieArr = new Movie[503];
   //public int[] DateArr = new int[503];
+
+  public int[] MovieDates = new int[503];
+
   public MovieDict(){
   }
   
@@ -16,7 +19,16 @@ class MovieDict implements java.io.Serializable{
   public void insertDict(Movie newMovie){
     newMovie.setNext(MovieArr[newMovie.getID()%503]);
     MovieArr[newMovie.getID()%503]= newMovie;
+
+    int x = 0;
+    MovieDates[x] = newMovie.getDate();
     n++;      
+  }
+
+  public int[] ordredArry(){
+    int[] temp = MovieDates; 
+    Arrays.sort(temp);
+    return temp;
   }
 
   //delete 
