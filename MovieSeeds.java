@@ -10,62 +10,33 @@ class MovieSeeds {
     
         //create new movies
         //Movie (String mName, Integer mID, Integer rDate, Integer rating)
-        Movie aMovie = new Movie("Nightmare Before Christmas", 20011031, 95);
-        Movie bMovie = new Movie("Caroline", 20200821 , 90);
-        Movie cMovie = new Movie("Elves", 20031015, 29);
-        Movie dMovie = new Movie("Jump", 20200921 , 47);
-        Movie eMovie = new Movie("Blood Red Sky", 20190930, 89);
-        Movie fMovie = new Movie("The Silence", 20180821 , 56);
-        Movie gMovie = new Movie("Hush", 20010918, 67);
-        Movie hMovie = new Movie("Before I wak", 20040621 , 78);
-        Movie iMovie = new Movie("Titanic", 19690624, 93);
         Movie jMovie = new Movie("Level 16", 19660908 , 90);
         Movie kMovie = new Movie("A Silent Voice", 19970920 , 58);
+        Movie iMovie = new Movie("Titanic", 19690624, 93);
         Movie lMovie = new Movie("The Ugly Truth", 19980212 , 86);
-        Movie mMovie = new Movie("Lady Bird", 20031115, 87);
-        Movie nMovie = new Movie("The Lovely Bones", 20160421 , 79);
-        Movie oMovie = new Movie("What Happened To Monday", 20000830, 69);
-        Movie pMovie = new Movie("Zodiac", 200050901 , 54);
+        Movie aMovie = new Movie("Nightmare Before Christmas", 20011031, 95);
+        Movie bMovie = new Movie("Caroline", 20020821 , 90);
+        Movie cMovie = new Movie("Elves", 20031015, 29);
+        Movie dMovie = new Movie("Jump", 20031121 , 47);
+        Movie eMovie = new Movie("Blood Red Sky", 20040930, 89);
+        Movie fMovie = new Movie("The Silence", 20050821 , 56);
+        Movie gMovie = new Movie("Hush", 20060918, 67);
+        Movie hMovie = new Movie("Before I wak", 20070621 , 78);
+        Movie mMovie = new Movie("Lady Bird", 20081115, 87);
+        Movie nMovie = new Movie("The Lovely Bones", 20110421 , 79);
+        Movie oMovie = new Movie("What Happened To Monday", 20110830, 69);
+        Movie pMovie = new Movie("Zodiac", 20150901 , 54);
         Movie qMovie = new Movie("The Old Ways", 20151031, 76);
-        Movie rMovie = new Movie("After Math",20210121 , 69);
-        Movie sMovie = new Movie("The Conjuring", 20011111, 84);
-        Movie tMovie = new Movie("Underworld", 20000101 , 39);
-        Movie uMovie = new Movie("Apostle", 20031031, 57);
-        Movie vMovie = new Movie("The Silence", 20170521 , 55);   
-        Movie wMovie = new Movie("Eli", 20170820 , 62);
-        Movie xMovie = new Movie("Winchester", 20001004, 27);
-        Movie yMovie = new Movie("Death Note", 20210317 , 59);
-        Movie zMovie = new Movie("Veronica", 20030916, 100);
+        Movie rMovie = new Movie("After Math",20160121 , 69);
+        Movie sMovie = new Movie("The Conjuring", 20016111, 84);
+        Movie tMovie = new Movie("Underworld", 20170101 , 39);
+        Movie uMovie = new Movie("Apostle", 20171031, 57);
+        Movie vMovie = new Movie("The Silence", 20171121 , 55);   
+        Movie wMovie = new Movie("Eli", 20171220 , 62);
+        Movie xMovie = new Movie("Winchester", 20180104, 27);
+        Movie yMovie = new Movie("Death Note", 20180217 , 59);
+        Movie zMovie = new Movie("Veronica", 20180316, 100);
     
-        a.insertHeap(aMovie);
-        a.insertHeap(bMovie);
-        a.insertHeap(cMovie);
-        a.insertHeap(dMovie);
-        a.insertHeap(eMovie);
-        a.insertHeap(lMovie);
-        a.insertHeap(gMovie);
-        a.insertHeap(zMovie);
-        a.insertHeap(fMovie);
-        a.insertHeap(hMovie);
-        a.insertHeap(iMovie);
-        a.insertHeap(jMovie);
-        a.insertHeap(kMovie);
-
-        a.insertHeap(mMovie);
-        a.insertHeap(nMovie);
-        a.insertHeap(oMovie);
-        a.insertHeap(pMovie);
-        a.insertHeap(qMovie);
-        a.insertHeap(rMovie);
-
-        a.insertHeap(sMovie);
-        a.insertHeap(tMovie);
-        a.insertHeap(uMovie);
-        a.insertHeap(vMovie);
-        a.insertHeap(wMovie);
-        a.insertHeap(xMovie);
-        a.insertHeap(yMovie);
-
         b.insertDict(aMovie);
         b.insertDict(bMovie);
         b.insertDict(cMovie);
@@ -96,6 +67,38 @@ class MovieSeeds {
 
         b.insertDict(yMovie);
         b.insertDict(zMovie);
+
+
+        
+        a.insertHeap(aMovie);
+        a.insertHeap(bMovie);
+        a.insertHeap(cMovie);
+        a.insertHeap(dMovie);
+        a.insertHeap(eMovie);
+        a.insertHeap(lMovie);
+        a.insertHeap(gMovie);
+        a.insertHeap(zMovie);
+        a.insertHeap(fMovie);
+        a.insertHeap(hMovie);
+        a.insertHeap(iMovie);
+        a.insertHeap(jMovie);
+        a.insertHeap(kMovie);
+
+        a.insertHeap(mMovie);
+        a.insertHeap(nMovie);
+        a.insertHeap(oMovie);
+        a.insertHeap(pMovie);
+        a.insertHeap(qMovie);
+        a.insertHeap(rMovie);
+
+        a.insertHeap(sMovie);
+        a.insertHeap(tMovie);
+        a.insertHeap(uMovie);
+        a.insertHeap(vMovie);
+        a.insertHeap(wMovie);
+        a.insertHeap(xMovie);
+        a.insertHeap(yMovie);
+
 
         b.printHashtable();
 
