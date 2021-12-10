@@ -1,6 +1,8 @@
 class MovieDict implements java.io.Serializable{
     private int n = 0; 
     private Movie[] MovieArr = new Movie[503];
+
+    private Movie[] MovieSordered = new Movie[503];
   
     public MovieDict(){
 
@@ -54,6 +56,17 @@ class MovieDict implements java.io.Serializable{
         }
       }
       return temp;
+    }
+
+    public void makeSortedArray(){
+        for (int i = 0 ; i<503 ;i++ )
+        {
+            Movie temp = MovieArr[i];
+            while (temp != null){
+                System.out.println(temp.getName()+ " Movie id:" +temp.getID() + " isAvailable?:" + temp.isAvailable());
+                temp = temp.getNext();
+            }
+        }
     }
   
     public void printHashtable(){

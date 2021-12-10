@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.io.*;
 
-public class Newflix {
+public class Main {
     
     static public CustomerBST all = new CustomerBST();
     static public MovieHeap avalibleMovies = new MovieHeap();
@@ -27,18 +27,18 @@ public class Newflix {
             in.close();
             Files.close();
               
-            System.out.println("Object has been deserialized ");
+            //System.out.println("Object has been deserialized ");
         }
           
         catch(IOException ex)
         {
-            System.out.println(ex);
-            System.out.println("IOException is caught");
+            //System.out.println(ex);
+            //System.out.println("IOException is caught");
         }
           
         catch(ClassNotFoundException ex)
         {
-            System.out.println("ClassNotFoundException is caught");
+            //System.out.println("ClassNotFoundException is caught");
         }
 
         // Deserialization of MovieHeap
@@ -56,18 +56,18 @@ public class Newflix {
             in.close();
             Files.close();
               
-            System.out.println("Object has been deserialized ");
+            //System.out.println("Object has been deserialized ");
         }
           
         catch(IOException ex)
         {
-            System.out.println(ex);
-            System.out.println("IOException is caught");
+            //System.out.println(ex);
+            //System.out.println("IOException is caught");
         }
           
         catch(ClassNotFoundException ex)
         {
-            System.out.println("ClassNotFoundException is caught");
+            //System.out.println("ClassNotFoundException is caught");
         }
 
         // Deserialization of MovieDict
@@ -82,32 +82,33 @@ public class Newflix {
             in.close();
             Files.close();
               
-            System.out.println("Object has been deserialized ");
+            //System.out.println("Object has been deserialized ");
         }
           
         catch(IOException ex)
         {
-            System.out.println(ex);
-            System.out.println("IOException is caught");
+            //System.out.println(ex);
+            //System.out.println("IOException is caught");
         }
           
         catch(ClassNotFoundException ex)
         {
-            System.out.println("ClassNotFoundException is caught");
+            //System.out.println("ClassNotFoundException is caught");
         }
 
 
 
         // Begining of of CLI menu code
-
         boolean running = true;
 
-        System.out.println("Welcome to Newflix");
-        System.out.println("As an admin you have accsess to all commands");
+        //instructions for menu 
+        System.out.println();
+        System.out.println("Welcome to Netflix");
+        System.out.println("As an admin you have access to all commands");
         System.out.println("Type 'h' for the list of all commands");
-        Scanner user = new Scanner(System.in);
+        Scanner user = new Scanner(System.in);  //create the scanner we'll be using throughout the program
 
-        while(running){
+        while(running){   //instruction manual w/ different commands and features
             try {
                 String in = user.nextLine();
                 if (in.equals("h")){
@@ -120,9 +121,9 @@ public class Newflix {
                     System.out.println("Enter '3' to See Customer commands");
                     System.out.println("Enter '4' to See Movie commands");
                 }
-                else if (in.equals("q")){
+                else if (in.equals("q")){ //quit function
                     running = false;
-                    System.out.println("Thank you for watching until next time");
+                    System.out.println("Thank you for watching, until next time!");
                     //String filename = "file.ser";
         
                     // Serialization of CustomerBST
@@ -138,13 +139,13 @@ public class Newflix {
                         out.close();
                         file.close();
                             
-                        System.out.println("Object has been serialized");
+                        //System.out.println("Object has been serialized");
                 
                     }
                         
                     catch(IOException ex)
                     {
-                        System.out.println("IOException is caught");
+                        //System.out.println("IOException is caught");
                     }
 
                     // Serialization of MovieHeap
@@ -161,7 +162,7 @@ public class Newflix {
                         out.close();
                         file.close();
                             
-                        System.out.println("Object has been serialized");
+                        //System.out.println("Object has been serialized");
                         
                     } catch (Exception e) {
                         System.out.println(e);
@@ -181,7 +182,7 @@ public class Newflix {
                         out.close();
                         file.close();
                             
-                        System.out.println("Object has been serialized");
+                        //System.out.println("Object has been serialized");
                         
                     } catch (Exception e) {
                         System.out.println(e);
@@ -189,7 +190,7 @@ public class Newflix {
 
                 }
                 else if (in.equals("1")){
-                    //createCustomer();
+                  //createCustomer();
 
                     boolean creatingCustomer = true;
 
@@ -202,22 +203,25 @@ public class Newflix {
                         name = user.nextLine();
                         System.out.print("Please enter your email: ");
                         email = user.nextLine();
-                        System.out.print("Please enter your credit card number: ");
+                        System.out.print("Please enter the last five digits of your credit card number: ");
                         creditcardNum = user.nextInt();
+
     
                         try {
                             Customer temp = new Customer(name, email, creditcardNum);
                             all.insert(temp);
                             creatingCustomer = false;
-                        } catch (Exception e) {
-                            System.out.println("You entered an invalid variable please try again and enter information carfully");
+                            System.out.println(temp.getName()+"'s account was created successfully! Welcome to your subscription! You are back in the main menu!");
+                        } 
+                        catch (Exception e) {
+                            System.out.println("You entered an invalid variable please try again and enter the information carefully");
                         }
                     }
                     in = user.nextLine(); // very hacky way of preventing a new line charter from makeing the else in the orginal while loop occur unexpectedly
                 }
                 else if (in.equals("2")){
                     //createMovie();
-                     //createMovie();
+
                      boolean createMovie = true; 
                      String mName;
                      int rDate;
@@ -238,7 +242,7 @@ public class Newflix {
                            rDate = user.nextInt();
                      }
                  
-                     System.out.println("What rate would you give this film out of 100 being the best and 0 being the worse: ");
+                     System.out.println("What rate would you give this film out of 100. 100 being the best film you've watched and 0 being the worse: ");
                      rating = user.nextInt();  //user inputs the rating of the film
 
                      try {
@@ -246,96 +250,111 @@ public class Newflix {
                            avalibleMovies.insertHeap(tempM);
                            allMoviesEver.insertDict(tempM);
                            createMovie = false; // stops from prompting for another movie
-                           System.out.println("Successfully added the movie!");
+                           System.out.println("Movie was successfully added! You are back in the main menu.");
                        } 
                      catch (Exception e) {
-                           System.out.println("You entered an invalid variable please try again and enter the information carfully. Make sure the year, month, day and rating are integers.");
+                           System.out.println("You entered an invalid variable please try again and enter the information carefully. Make sure the year, month, day and rating are numbers.");
                        }
 
                      in = user.nextLine();
              
                      }
-                     
-
                 }
-                else if (in.equals("3")){
+
+                else if (in.equals("3")){ 
+                    // customer commands 
                     boolean customersPage = true;
                     System.out.println("To see all current Customers enter 'a'");
                     System.out.println("To search for a Customers enter 's'");
                     System.out.println("To return to the main menu enter 'b'");
-                    //in = user.nextLine();
                     
                     while (customersPage){
                         in = user.nextLine();
                         if (in.equals("a")){
                             all.printTree();
-                        }else if (in.equals("s")){
-                            System.out.println("What customer would you like to accsess remember you enter the credit number of the customer you are looking for");
+                            System.out.println("These are all the users we have. Enter 'b' to get out of the Customer Page.");
+                        }
+                        
+                        else if (in.equals("s")){
+                          //searchCustomers();
+                            System.out.println("What customer would you like to access? In order to successfully find the customer remember you must enter the credit number of the customer you are looking for.");
                             int key = user.nextInt();
-                            // searchCustomers();
                             Customer temp = all.search(key);
 
                             if (temp != null){
-                                System.out.println("This is "+ temp.getName() +"'s page");
+                                //customer information
+                                System.out.println("This is "+ temp.getName() +"'s page"); 
                                 System.out.println(temp.getName() +"'s email is "+ temp.getEmail());
-                                System.out.println(temp.getName() +" has a wish list with "+ temp.WishlistLength()+" Movies in it");
-                                System.out.println("Enter 1 to watch the next movie on the "+ temp.getName()+"'s wishlist");
+                                System.out.println(temp.getName() +" has a wish list with "+ temp.WishlistLength()+" movies in it");
+
+                                //commands for the wishlist 
+                                System.out.println("");
+                                System.out.println("Enter 1 to see the next movie on the "+ temp.getName()+"'s wishlist");
                                 System.out.println("Enter 2 to add a movie to "+ temp.getName()+"'s wishlist");
                                 System.out.println("Enter 3 to watch a movie for "+ temp.getName());
                                 System.out.println("Enter 4 to return to " + temp.getName() + "'s customer page ");
-                                //int show = user.nextInt();
+
                                 boolean customerSelected = true;
                                 while (customerSelected){
                                     int show = user.nextInt();
-                                    if (show == 1){
-                                        //System.out.println("hi");
+                                    //see the next movie option
+                                    if (show == 1){   
                                         temp.upNest();
                                         in = user.nextLine();
-                                    } else if (show == 2){
-                                        System.out.println("enter the ID of the movie you want to add to " + temp.getName()+"'s wishlist");
+                                    } 
+                                    //option to watch a movie
+                                    else if (show == 2){
+                                        System.out.println("Enter the ID of the movie you want to add to " + temp.getName()+"'s wishlist");
                                         int id = user.nextInt();
                                         Movie tempMovie = allMoviesEver.lookUpDict(id);
                                         if (tempMovie!= null){
                                             temp.addToWish(tempMovie);
-                                        }else{
-                                            System.out.println("Seems like you entered an invalid movie id");
+                                        }
+                                        else{
+                                            System.out.println("Seems like you entered an invalid movie ID. Please try again.");
                                             avalibleMovies.printHeap();
                                         }
-    
-                                    } else if (show == 3){
-                                        System.out.println("enter the ID of the movie you want show" + temp.getName());
+                                    } 
+
+                                    //option to watch a movie
+                                    else if (show == 3){
+                                        System.out.println("Enter the ID of the movie you want to watch" + temp.getName());
                                         int id = user.nextInt();
                                         Movie tempMovie = allMoviesEver.lookUpDict(id);
                                         if (tempMovie !=null){
                                             if (tempMovie.isAvailable()){
                                                 System.out.println(temp.getName() + " Watched " + tempMovie.getName());
                                                 temp.watch(tempMovie);
-                                            }else{
-                                                System.out.println("Sorry "+ tempMovie.getName() +" is no longer avlaible");
                                             }
-                                        }else{
-                                            System.out.println("Seems like you entered an invalid movie id");
+                                            else{
+                                                System.out.println("Sorry "+ tempMovie.getName() +" is no longer available");
+                                            }
+                                        }
+                                        else{
+                                            System.out.println("Seems like you entered an invalid movie ID. Please try again.");
                                             avalibleMovies.printHeap();
                                         }
-                                    } else if (show == 4){
+                                    } 
+                                    else if (show == 4){
                                         customerSelected = false;
                                     }
                                     else{
-                                        System.out.println("seems like you entered an invalid command");
+                                        System.out.println("It seems like you entered an invalid command.");
                                     }
                                 }
-
-                            }else{
-                                System.out.println("seems like credid card number does not match any user");
+                            }
+                            else {  //
+                                System.out.println("It seems like the credit card number does not match any user's account");
                                 System.out.println("Please use the 'a' command to see the credit card numbers");
                             }
-                            in = user.nextLine(); // very hacky way of preventing a new line charter from makeing the else in the orginal while loop occur unexpectedly
-
-                        }else if (in.equals("b")){
+                            in = user.nextLine(); // very hacky way of preventing a new line character from making the else in the orginal while loop occur unexpectedly
+                        }
+                        else if (in.equals("b")){
                             customersPage = false;
-                            System.out.println("Returning to main menu");
-                            System.out.println("Remeber enter 'h' to see commands");
-                        }else {
+                            System.out.println("Returning to the main menu");
+                            System.out.println("Remember enter 'h' to see commands");
+                        }
+                        else {
                             System.out.println("Seems like you entered an invalid command");
                             System.out.println("To see all current Customers enter 'a'");
                             System.out.println("To search for a Customers enter 's'");
@@ -343,13 +362,13 @@ public class Newflix {
                         }
                     }
                 }
-                else if (in.equals("4")){
-
+                else if (in.equals("4")){ 
+                  //movies page
                     boolean moviePage = true;
 
-                    System.out.println("To see all avalible movies enter 'a'");
-                    System.out.println("To see all movies ever enter b");
-                    System.out.println("To see the least rated movie enter 'c'");
+                    System.out.println("To see all available movies enter 'a'");
+                    System.out.println("To see all movies ever enter 'b'");
+                    System.out.println("To see the least rated movie entered 'c'");
                     System.out.println("To return to the main menu enter 'd'");
 
                     while (moviePage) {
@@ -357,41 +376,44 @@ public class Newflix {
 
                         if (in.equals("a")) {
 
-                            System.out.println("All avalible movies");
+                            System.out.println("All available movies: ");
                             avalibleMovies.printHeap();
 
                         } else if (in.equals("b")){
 
                             allMoviesEver.printHashtable();
 
-                        } else if(in.equals("c")){
-
+                        } else if(in.equals("c")){  
+                            System.out.print("The least rated movie is: ");
                             Movie temp = avalibleMovies.findMin();
 
                             if (temp != null){
                                 System.out.println(temp.getName());
-                                System.out.println("would you like to remove this movie for the pool of avalible movies");
-                                System.out.println("enter 'y' for yes and any other charicter for no");
+                                System.out.println("Would you like to remove this movie from the pool of available movies");
+                                System.out.println("Enter 'y' for yes and any other character for no");
                                 in = user.nextLine();
                                 if (in.equals("y")){
                                     avalibleMovies.deleteMin();
                                     System.out.println("deleting "+ temp.getName()+" rating: "+temp.getRating());
+                                    System.out.println("The movie has been deleted! Enter 'd' to go back to the main menu.");
                                 }
-                            }else {
-                                System.out.println("Seems like no movies are avalible");
+                            }
+                            else {  //if heap is empty 
+                                System.out.println("Seems like no movies are available");
                             }
 
-                        }else if (in.equals("d")){
-                            moviePage = false;
-                            System.out.println("Returning to main menu");
-                            System.out.println("Remeber enter 'h' to see commands");
-                        }else {
-                            System.out.println("Seems like you entered an invlaid command");
                         }
-                        
+                        else if (in.equals("d")){
+                            moviePage = false;
+                            System.out.println("Returning to the main menu");
+                            System.out.println("Remember to enter 'h' to see commands");
+                        }
+                        else {
+                            System.out.println("Seems like you entered an invalid command");
+                        }  
                     }
-
                 }
+
                 else{
                     System.out.println("Seems like you entered an invalid command");
                     System.out.println("");
@@ -409,7 +431,6 @@ public class Newflix {
                 System.out.println(e);
                 System.out.println("hi");
                 break;
-                //continue;
             }
         }
             user.close();
