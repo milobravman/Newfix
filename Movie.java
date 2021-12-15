@@ -30,6 +30,10 @@ public class Movie implements java.io.Serializable{
 	public Movie getNext(){
 		return nextMovie;
 	}
+
+  public void changeAvaliblity(){
+		avail = false;
+	}
   
 
   //the following code is all for the movie ID

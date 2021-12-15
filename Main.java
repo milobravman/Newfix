@@ -232,21 +232,27 @@ public class Main {
                      System.out.println("Here you can enter a new movie! However, please don't enter a film from before the 1800s!");
                      System.out.println();
 
-                     System.out.println("What is the title of the film?: ");
-                     mName = user.nextLine(); //input of the title
-
-                     System.out.println("In the following lines we will require information about the release date.");
-                     System.out.println("Input the release date in the following format --> YYYYMMDD: example 20211206");
-                     rDate = user.nextInt(); // user input of the date
                      
-                     while(String.valueOf(rDate).length() != 8){
-                           rDate = user.nextInt();
-                     }
-                 
-                     System.out.println("What rate would you give this film out of 100. 100 being the best film you've watched and 0 being the worse: ");
-                     rating = user.nextInt();  //user inputs the rating of the film
-
                      try {
+                            System.out.println("What is the title of the film?: ");
+                            mName = user.nextLine(); //input of the title
+        
+                            System.out.println("In the following lines we will require information about the release date.");
+                            System.out.println("Input the release date in the following format --> YYYYMMDD: example 20211206");
+        
+                            boolean good = false;
+        
+        
+                            rDate = user.nextInt(); // user input of the date
+                            good = true;
+        
+                            
+                            while(String.valueOf(rDate).length() != 8){
+                                rDate = user.nextInt();
+                            }
+                        
+                            System.out.println("What rate would you give this film out of 100. 100 being the best film you've watched and 0 being the worse: ");
+                            rating = user.nextInt();  //user inputs the rating of the film
                            Movie tempM = new Movie(mName, rDate, rating);
                            avalibleMovies.insertHeap(tempM);
                            allMoviesEver.insertDict(tempM);
@@ -404,6 +410,7 @@ public class Main {
                                 System.out.println("Enter 'y' for yes and any other character for no");
                                 in = user.nextLine();
                                 if (in.equals("y")){
+                                    temp.changeAvaliblity();
                                     avalibleMovies.deleteMin();
                                     System.out.println("remvoing "+ temp.getName()+" from the list of avlaible movies rating: "+temp.getRating());
                                     System.out.println("The movie has been removed! Enter 'd' to go back to the main menu.");
