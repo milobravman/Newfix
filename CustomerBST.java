@@ -175,10 +175,10 @@ public class CustomerBST implements java.io.Serializable{
         // System.out.println("node is " + node.getKey());
         if (node.getCreditNum() > head.getCreditNum()){ // if the key we are looking for is bigger than the node are at have look to the node's right
             if (head.getRight() == null){
-                System.out.println("The tree does not have this node!");
+                //System.out.println("The tree does not have this node!");
             }
             else if (node.getCreditNum() == head.getRight().getCreditNum()){ // case where we find the thing we want to delete
-                System.out.println("calling deleteRoot on"+ node.getCreditNum());
+                //System.out.println("calling deleteRoot on"+ node.getCreditNum());
                 head.setRight(deleteRoot(node));// the idea here is to set the right pointer of the 'head' of this tree or subtree to be the whatever deleteRoot returns beccause that should the be the joining og the new mutated secrion or the subtree that had the key node as its root/head to the original tree passed into the delete method.
 
                 // Note before it was head.setRight(deleteRoot(node));
@@ -190,10 +190,10 @@ public class CustomerBST implements java.io.Serializable{
         else{
             // I need to go to the left side of the tree
             if (head.getLeft() == null){
-                System.out.println("The tree does not have this node!");
+                //System.out.println("The tree does not have this node!");
             }
             else if (node.getCreditNum() == head.getLeft().getCreditNum()){ // case where we find the thing we want to delete
-                System.out.println("calling deleteRoot on"+ node.getCreditNum());
+                //System.out.println("calling deleteRoot on"+ node.getCreditNum());
                 head.setLeft(deleteRoot(node)); // the idea here is to set the right pointer of the 'head' of this tree or subtree to be the whatever deleteRoot returns beccause that should the be the joining og the new mutated secrion or the subtree that had the key node as its root/head to the original tree passed into the delete method.
 
                 // Note before it was head.setRight(deleteRoot(node));

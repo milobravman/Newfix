@@ -99,6 +99,7 @@ class MovieDict implements java.io.Serializable{
 
   public void printHashtable(){//print all movies in order of release date 
    int x = 0; 
+   int count = 0;
    int[] DateArr = new int[503];
    for (int i = 0 ; i<503 ; i++ ){ 
      Movie temp = MovieArr[i];
@@ -111,7 +112,9 @@ class MovieDict implements java.io.Serializable{
    Arrays.sort(DateArr);
    for (int i = 0; i < 503; i++) {
      if (DateArr[i]!=0){
-      System.out.println((lookUpDate(DateArr[i]).getName())+ " " + (lookUpDate(DateArr[i] ).getDate()));
+      
+      System.out.println((count+": "+lookUpDate(DateArr[i]).getName())+ " " + (lookUpDate(DateArr[i] ).getDate()));
+      count++;
      }
    }
   }

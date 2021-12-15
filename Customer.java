@@ -46,6 +46,21 @@ public class Customer implements java.io.Serializable {
         return email;
     }
 
+    //basic setter methods
+
+    public void setName(String name2){
+        name = name2;
+    }
+
+    public void setEmail(String email2){
+        email = email2;
+    }
+
+    public void setCredit(int credit2){
+        creditNum = credit2;
+    }
+
+
     //Node Getter and Setter methods for the Node pointers
 
     public Customer getLeft() {
