@@ -8,9 +8,15 @@ public class Main {
     static public MovieHeap avalibleMovies = new MovieHeap();
     static public MovieDict allMoviesEver = new MovieDict(); 
 
+    public static void write(){
+        System.out.println("Class method / Function test");
+    }
+
 
     public static void main(String[] args) {
 
+
+        write();
 
         // Deserialization of CustomerBST
         try
@@ -21,24 +27,17 @@ public class Main {
 
             all = (CustomerBST)in.readObject();
             
-            // Method for deserialization of object
-            
             // Reading the Heap from a file
             in.close();
             Files.close();
-              
-            //System.out.println("Object has been deserialized ");
         }
           
         catch(IOException ex)
         {
-            //System.out.println(ex);
-            //System.out.println("IOException is caught");
         }
           
         catch(ClassNotFoundException ex)
         {
-            //System.out.println("ClassNotFoundException is caught");
         }
 
         // Deserialization of MovieHeap
@@ -198,24 +197,23 @@ public class Main {
                     String email;
                     int creditcardNum;
 
-                    
-                    while (creatingCustomer){ 
-                        try {
-                            System.out.print("Please enter a username: ");
-                            name = user.nextLine();
-                            System.out.print("Please enter your email: ");
-                            email = user.nextLine();
-                            System.out.print("Please enter the last five digits of your credit card number: ");
-                            creditcardNum = user.nextInt();
-                            Customer temp = new Customer(name, email, creditcardNum);
-                            all.insert(temp);
-                            creatingCustomer = false;
-                            System.out.println(temp.getName()+"'s account was created successfully! Welcome to your subscription! You are back in the main menu!");
-                        } 
-                        catch (Exception e) {
-                            System.out.println("You entered an invalid variable please try again and enter the information carefully");
-                        }
+
+                    try {
+                        System.out.print("Please enter a username: ");
+                        name = user.nextLine();
+                        System.out.print("Please enter your email: ");
+                        email = user.nextLine();
+                        System.out.print("Please enter the last five digits of your credit card number: ");
+                        creditcardNum = user.nextInt();
+                        Customer temp = new Customer(name, email, creditcardNum);
+                        all.insert(temp);
+                        creatingCustomer = false;
+                        System.out.println(temp.getName()+"'s account was created successfully! Welcome to your subscription! You are back in the main menu!");
+                    } 
+                    catch (Exception e) {
+                        System.out.println("You entered an invalid variable please try again and enter the information carefully");
                     }
+                    
                     in = user.nextLine(); // very hacky way of preventing a new line charter from makeing the else in the orginal while loop occur unexpectedly
                 }
                 else if (in.equals("2")){
@@ -300,7 +298,7 @@ public class Main {
                                     System.out.println("Enter 3 to watch a movie for "+ temp.getName());
                                     System.out.println("Enter 4 to change "+ temp.getName()+" info");
                                     System.out.println("Enter 5 to see all movies " + temp.getName() + " has ever watched");
-                                    System.out.println("Enter 6 to return to " + temp.getName() + "'s customer page ");
+                                    System.out.println("Enter 6 to return to all customers page ");
                                     try {
                                         boolean customerSelected = true;
                                         while (customerSelected){
@@ -379,10 +377,22 @@ public class Main {
                                             }
                                             else{
                                                 System.out.println("It seems like you entered an invalid command.");
+                                                System.out.println("Returning to Customers menu");
+        
+                                                System.out.println("To see all current Customers enter 'a'");
+                                                System.out.println("To search for a Customers enter 's'");
+                                                System.out.println("To return to the main menu enter 'b'");
+
                                             }
                                         }
                                     } catch (Exception e) {
                                         System.out.println("It seems like you entered an invalid command.");
+                                        System.out.println("Returning to Customers menu");
+        
+                                        System.out.println("To see all current Customers enter 'a'");
+                                        System.out.println("To search for a Customers enter 's'");
+                                        System.out.println("To return to the main menu enter 'b'");
+
                                     }
                                 }
                                 else {  //

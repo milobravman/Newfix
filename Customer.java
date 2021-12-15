@@ -175,7 +175,7 @@ public class Customer implements java.io.Serializable {
             }
 
         } else {
-            System.out.println(name +"has not watched any movies");
+            System.out.println(name +" has not watched any movies");
         }
     }
 
