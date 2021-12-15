@@ -7,6 +7,8 @@ public class Newflix {
     static public MovieHeap avalibleMovies = new MovieHeap();
     static public MovieDict allMoviesEver = new MovieDict(); 
 
+    
+
 
     public static void main(String[] args) {
 

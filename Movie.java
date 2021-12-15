@@ -34,6 +34,7 @@ public class Movie implements java.io.Serializable{
   public void changeAvaliblity(){
 		avail = false;
 	}
+
   
 
   //the following code is all for the movie ID

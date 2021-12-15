@@ -11,7 +11,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Customer object = new Customer(1, "geeksforgeeks");
 
         // Deserialization of CustomerBST
         try
@@ -100,9 +99,10 @@ public class Main {
 
 
         // Begining of of CLI menu code
+        // Quiting will set this boolean to false and end the program
         boolean running = true;
 
-        //instructions for menu 
+        //instructions for Main menu 
         System.out.println();
         System.out.println("Welcome to Netflix");
         System.out.println("As an admin you have access to all commands");
@@ -122,7 +122,8 @@ public class Main {
                     System.out.println("Enter '3' to See Customer commands");
                     System.out.println("Enter '4' to See Movie commands");
                 }
-                else if (in.equals("q")){ //quit function
+                //Quit function setializes all the data so if the program crashes or is closed with ctrl c the data entered will not be saved
+                else if (in.equals("q")){ 
                     running = false;
                     System.out.println("Thank you for watching, until next time!");
                     //String filename = "file.ser";
@@ -139,14 +140,12 @@ public class Main {
                             
                         out.close();
                         file.close();
-                            
-                        //System.out.println("Object has been serialized");
                 
                     }
                         
                     catch(IOException ex)
                     {
-                        //System.out.println("IOException is caught");
+                        System.out.println(ex);
                     }
 
                     // Serialization of MovieHeap
@@ -191,7 +190,7 @@ public class Main {
 
                 }
                 else if (in.equals("1")){
-                  //createCustomer();
+                  //createCustomer Menu
 
                     boolean creatingCustomer = true;
 
@@ -199,16 +198,15 @@ public class Main {
                     String email;
                     int creditcardNum;
 
-                    while (creatingCustomer){
-                        System.out.print("Please enter a username: ");
-                        name = user.nextLine();
-                        System.out.print("Please enter your email: ");
-                        email = user.nextLine();
-                        System.out.print("Please enter the last five digits of your credit card number: ");
-                        creditcardNum = user.nextInt();
-
-    
+                    
+                    while (creatingCustomer){ 
                         try {
+                            System.out.print("Please enter a username: ");
+                            name = user.nextLine();
+                            System.out.print("Please enter your email: ");
+                            email = user.nextLine();
+                            System.out.print("Please enter the last five digits of your credit card number: ");
+                            creditcardNum = user.nextInt();
                             Customer temp = new Customer(name, email, creditcardNum);
                             all.insert(temp);
                             creatingCustomer = false;
@@ -411,6 +409,10 @@ public class Main {
                                 in = user.nextLine();
                                 if (in.equals("y")){
                                     temp.changeAvaliblity();
+                                    int key = temp.getID();
+                                    Movie temp2 = allMoviesEver.lookUpDict(key);
+                                    temp2.changeAvaliblity();
+                                    System.out.println(temp.isAvailable());
                                     avalibleMovies.deleteMin();
                                     System.out.println("remvoing "+ temp.getName()+" from the list of avlaible movies rating: "+temp.getRating());
                                     System.out.println("The movie has been removed! Enter 'd' to go back to the main menu.");
