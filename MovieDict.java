@@ -41,6 +41,7 @@ class MovieDict implements java.io.Serializable{
     int key = newMovie.getID();
     Movie pre = MovieArr[key%503];
     Movie temp = MovieArr[key%503];
+    n--;
     int r = 0;
     while (temp!=null){
       if (temp.getID() == key){
@@ -66,6 +67,22 @@ class MovieDict implements java.io.Serializable{
     }
     return MovieArr;
   }  
+
+  // delete movie date
+
+  public void deleteMovieDate(Movie date){
+    int toDelete = date.getDate();
+
+    for (int i = 503-x; i>503; i++){
+      if(toDelete == MovieDates[i]){
+        MovieDates[i] = 0;
+        Arrays.sort(MovieDates);
+        x--;
+      }
+    }
+  
+
+  }
     
   //look up 
   public Movie lookUpDict(int key){
@@ -112,7 +129,6 @@ class MovieDict implements java.io.Serializable{
    Arrays.sort(DateArr);
    for (int i = 0; i < 503; i++) {
      if (DateArr[i]!=0){
-      
       System.out.println((count+": "+lookUpDate(DateArr[i]).getName())+ " " + (lookUpDate(DateArr[i] ).getDate()));
       count++;
      }

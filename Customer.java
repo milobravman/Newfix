@@ -16,7 +16,7 @@ public class Customer implements java.io.Serializable {
     private int wishN;
 
     // List of movies watched
-    private Movie head;
+    private Watched head;
     private int wachedN;
 
     //constructor
@@ -156,19 +156,45 @@ public class Customer implements java.io.Serializable {
         //return temp;
     }
 
+
+    // add movies to the watched list
+    // needs to check if movie has already been watched to prevent a movie node from pointing to itself
     public void watch(Movie node){
+
+        Watched toAdd = new Watched(node.getName());
         if (wachedN == 0){
-            head = node;
-        }else{
-            node.setNext(head);
-            head = node;
+            head = toAdd;
+            wachedN++;
+        } else {
+            Watched temp = head;
+            head = toAdd;
+            toAdd.setNext(temp);
         }
-        wachedN++;
+        //else{
+
+        //     // This loop checks the incoming movie agains the list of watched movies to prevent the list from becoming a circle
+        //     boolean alreadyWatched = false;
+        //     Movie temp = head;
+        //     for (int i = 0; i<wachedN; i++){
+        //         if (temp.getID() == node.getID()){
+        //             System.out.println("This movie has already been watched");
+        //             alreadyWatched = true;
+        //         }
+        //         temp = temp.getNext();
+        //     }
+        //     // Only adds to the list if it is not alreay in there
+        //     if (alreadyWatched == false){
+        //         node.setNext(head);
+        //         head = node;
+        //         wachedN++;
+        //     }
+        // }
+        
     }
 
     public void printWatched(){
         if (head !=null){
-            Movie temp = head;
+            Watched temp = head;
             while (temp !=null){
                 System.out.println(name + " has watched " + temp.getName());
                 temp = temp.getNext();

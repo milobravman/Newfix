@@ -7,6 +7,7 @@ public class Main {
     static public CustomerBST all = new CustomerBST();
     static public MovieHeap avalibleMovies = new MovieHeap();
     static public MovieDict allMoviesEver = new MovieDict(); 
+    static public Movie changeKey = new Movie("dead", 000000, 00);
 
     public static void write(){
         System.out.println("Class method / Function test");
@@ -77,7 +78,11 @@ public class Main {
             ObjectInputStream in = new ObjectInputStream(Files);
 
             allMoviesEver = (MovieDict)in.readObject();
+
+
             
+
+
             in.close();
             Files.close();
               
@@ -191,7 +196,7 @@ public class Main {
                 else if (in.equals("1")){
                   //createCustomer Menu
 
-                    boolean creatingCustomer = true;
+                    //boolean creatingCustomer = true;
 
                     String name;
                     String email;
@@ -205,9 +210,15 @@ public class Main {
                         email = user.nextLine();
                         System.out.print("Please enter the last five digits of your credit card number: ");
                         creditcardNum = user.nextInt();
+
+                        while(String.valueOf(creditcardNum).length() != 5){
+                            System.out.print("Please enter the last five digits of your credit card number: ");
+                            creditcardNum = user.nextInt();
+                        }
+
                         Customer temp = new Customer(name, email, creditcardNum);
                         all.insert(temp);
-                        creatingCustomer = false;
+                        //creatingCustomer = false;
                         System.out.println(temp.getName()+"'s account was created successfully! Welcome to your subscription! You are back in the main menu!");
                     } 
                     catch (Exception e) {
@@ -249,6 +260,7 @@ public class Main {
                         
                             System.out.println("What rate would you give this film out of 100. 100 being the best film you've watched and 0 being the worse: ");
                             rating = user.nextInt();  //user inputs the rating of the film
+                            changeKey.changeMoviesEver(allMoviesEver.n);
                            Movie tempM = new Movie(mName, rDate, rating);
                            avalibleMovies.insertHeap(tempM);
                            allMoviesEver.insertDict(tempM);
@@ -324,7 +336,8 @@ public class Main {
         
                                             //option to watch a movie
                                             else if (show == 3){
-                                                System.out.println("Enter the ID of the movie you want to watch" + temp.getName());
+                                                System.out.println("Enter the ID of the movie you want to show " + temp.getName());
+                                                avalibleMovies.printHeap();
                                                 int id = user.nextInt();
                                                 Movie tempMovie = allMoviesEver.lookUpDict(id);
                                                 if (tempMovie !=null){
@@ -338,7 +351,6 @@ public class Main {
                                                 }
                                                 else{
                                                     System.out.println("Seems like you entered an invalid movie ID. Please try again.");
-                                                    avalibleMovies.printHeap();
                                                 }
                                             } else if (show == 4){
                                                 boolean changingInfo = true;
@@ -353,13 +365,17 @@ public class Main {
                                                         System.out.println("please enter a new credit number");
                                                         all.delete(temp);
                                                         int newCreditNum = user.nextInt();
+                                                        while(String.valueOf(newCreditNum).length() != 5){
+                                                            System.out.print("Please enter the last five digits of your credit card number: ");
+                                                            newCreditNum = user.nextInt();
+                                                        }
                                                         temp.setCredit(newCreditNum);
                                                         all.insert(temp);
                                                         changingInfo = false;
                                                         
                                                     } catch (Exception e) {
                                                         System.out.println("Sorry you probobly entered an invalid type please try again");
-                                                        //in = "h";
+                                                        
                                                     }
                                                 }
                                                 
@@ -377,12 +393,13 @@ public class Main {
                                             }
                                             else{
                                                 System.out.println("It seems like you entered an invalid command.");
-                                                System.out.println("Returning to Customers menu");
-        
-                                                System.out.println("To see all current Customers enter 'a'");
-                                                System.out.println("To search for a Customers enter 's'");
-                                                System.out.println("To return to the main menu enter 'b'");
 
+                                                System.out.println("Enter 1 to see the next movie on the "+ temp.getName()+"'s wishlist");
+                                                System.out.println("Enter 2 to add a movie to "+ temp.getName()+"'s wishlist");
+                                                System.out.println("Enter 3 to watch a movie for "+ temp.getName());
+                                                System.out.println("Enter 4 to change "+ temp.getName()+" info");
+                                                System.out.println("Enter 5 to see all movies " + temp.getName() + " has ever watched");
+                                                System.out.println("Enter 6 to return to all customers page ");
                                             }
                                         }
                                     } catch (Exception e) {
@@ -434,10 +451,8 @@ public class Main {
                         in = user.nextLine();
 
                         if (in.equals("a")) {
-
                             System.out.println("All available movies: ");
                             avalibleMovies.printHeap();
-
                         } else if (in.equals("b")){
                             allMoviesEver.printHashtable();
                         } else if(in.equals("c")){  
@@ -488,6 +503,7 @@ public class Main {
                                     in = user.nextLine(); // very silly way of not have the new line charater mess things up
                                     if(in.equals("y")){
                                         allMoviesEver.setMovieArr(allMoviesEver.deleteDict(temp));
+                                        allMoviesEver.deleteMovieDate(temp);
                                         System.out.println("Deleting " + temp.getName());
                                     }else if (in.equals("n")){  
                                         System.out.println("leaving " + temp.getName() + " in place");

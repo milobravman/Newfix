@@ -9,16 +9,21 @@ public class Movie implements java.io.Serializable{
   private Movie nextMovie = null; //tracks the next movie
   private Integer i = 0;          //count of the amount of movies we have
   private boolean avail = true;   //start off with all movies as available 
-  private static int moviesEverMade = 10000; // amount of movies ever made 
+  public static int moviesEverMade = 10000; // amount of movies ever made 
 
 
   public Movie (String mName, Integer rDate, Integer rating){ // what's used for the movie
+
     this.mName = mName;
     mID = moviesEverMade; 
     moviesEverMade++; //increments the amount of movies ever made
     this.rDate = rDate;
     this.rating = rating; 
     avail = true;
+  }
+
+  public void changeMoviesEver(int key){
+    moviesEverMade = moviesEverMade + key; 
   }
 
   //Points Integers to next movie
