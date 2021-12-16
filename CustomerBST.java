@@ -204,19 +204,4 @@ public class CustomerBST implements java.io.Serializable{
         } 
     }
 
-    public static void main(String[] args) {
-
-
-        Customer bob = new Customer("bob", "bob@yahoo.com", 021234);
-        Customer steve = new Customer("steve", "steve@yahoo.com", 2434509);
-        Customer sarah = new Customer("sarah", "sarah@gmail.com", 2345567);
-        CustomerBST all = new CustomerBST();
-        all.insert(steve);
-        all.insert(sarah);
-        all.insert(bob);
-        System.out.println();
-
-        all.printTree();
-    }
-
 }

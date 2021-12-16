@@ -357,7 +357,7 @@ public class Main {
                                                 while (changingInfo){
                                                     try {
                                                         //boolean notInt = true;
-                                                        String dead = user.nextLine();
+                                                        String dead = user.nextLine(); // catches a usless token
                                                         System.out.println("please enter a new name");
                                                         temp.setName(user.nextLine());
                                                         System.out.println("please enter a new email");
@@ -380,16 +380,16 @@ public class Main {
                                                 }
                                                 
                                             } 
+                                            else if (show == 5){
+                                                temp.printWatched();
+                                            }
                                             else if (show == 6){
                                                 customerSelected = false;
                                                 System.out.println("Returning to Customers menu");
-        
+                                                
                                                 System.out.println("To see all current Customers enter 'a'");
                                                 System.out.println("To search for a Customers enter 's'");
                                                 System.out.println("To return to the main menu enter 'b'");
-        
-                                            }else if (show == 5){
-                                                temp.printWatched();
                                             }
                                             else{
                                                 System.out.println("It seems like you entered an invalid command.");
@@ -547,8 +547,6 @@ public class Main {
 
             } catch (Exception e) {
                 System.out.println(e);
-                System.out.println("hi2");
-                //in = "h";
 
 
                 break;

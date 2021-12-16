@@ -107,8 +107,7 @@ public class Customer implements java.io.Serializable {
                         System.out.println("Please enter 'Y' for yes or 'N' for no");
                         Scanner watched = new Scanner(System.in);                   
                         while (true) {
-                            String userAnser = watched.next();
-                            //System.out.println(userAnser.equals("Y"));
+                            String userAnser = watched.next(); 
                             if (userAnser.equals("Y")){
                                 System.out.println("Removing "+ wishList[front%20].getName() +" from your wishlist");
                                 this.dequeue();
@@ -142,8 +141,11 @@ public class Customer implements java.io.Serializable {
                     }
                 }
                 else{
-                    System.out.println("Sorry this"+ wishList[front%20].getName() +"is no longer avalible");
+                    System.out.println("Sorry "+ wishList[front%20].getName() +" is no longer avalible");
                     this.dequeue();
+                    if (wishN == 0){
+                        break;
+                    }
                 }
             }
         }
@@ -170,25 +172,6 @@ public class Customer implements java.io.Serializable {
             head = toAdd;
             toAdd.setNext(temp);
         }
-        //else{
-
-        //     // This loop checks the incoming movie agains the list of watched movies to prevent the list from becoming a circle
-        //     boolean alreadyWatched = false;
-        //     Movie temp = head;
-        //     for (int i = 0; i<wachedN; i++){
-        //         if (temp.getID() == node.getID()){
-        //             System.out.println("This movie has already been watched");
-        //             alreadyWatched = true;
-        //         }
-        //         temp = temp.getNext();
-        //     }
-        //     // Only adds to the list if it is not alreay in there
-        //     if (alreadyWatched == false){
-        //         node.setNext(head);
-        //         head = node;
-        //         wachedN++;
-        //     }
-        // }
         
     }
 
